@@ -13,6 +13,7 @@ sudo apt-get install -y \
         golang  \
         zsh \
         awscli \
+        net-tools dig \
         python3-pip 
 
 #### Docker
