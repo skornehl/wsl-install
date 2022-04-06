@@ -62,18 +62,18 @@ sudo apt install -y terraform
 pip install awscli 
 
 #### Workspace 
-mkdir -p ${USER}/workspace
-cd ${USER}/Workspace
+mkdir -p ${HOME}/workspace
+cd ${HOME}/Workspace
 git clone https://github.com/skornehl/wsl-install.git
-cp -pr wsl-install/zshrc ${USER}/.zshrc
+cp -pr wsl-install/zshrc ${HOME}/.zshrc
 
 #### SSH
-mkdir ${USER}/.ssh
-cp /mnt/c/Users/sebas/workspace/ssh/* ${USER}/.ssh
-chown -R skornehl. ${USER}/.ssh
-chmod -R 600 ${USER}/.ssh
-ssh-add ${USER}/.ssh/id_ed25519
-ssh-add ${USER}/.ssh/id_rsa
+mkdir ${HOME}/.ssh
+cp /mnt/c/Users/sebas/workspace/ssh/* ${HOME}/.ssh
+chown -R skornehl. ${HOME}/.ssh
+chmod -R 600 ${HOME}/.ssh
+ssh-add ${HOME}/.ssh/id_ed25519
+ssh-add ${HOME}/.ssh/id_rsa
 
 #### Git
 git config --global user.email "sebastian.kornehl@codecentric.de"
