@@ -66,3 +66,13 @@ mkdir -p ${USER}/workspace
 cd ${USER}/Workspace
 git clone https://github.com/skornehl/wsl-install.git
 cp -pr wsl-install/zshrc ${USER}/.zshrc
+
+#### SSH
+mkdir ${USER}/.ssh
+cp /mnt/c/Users/sebas/workspace/ssh/* ${USER}/.ssh
+chown -R skornehl. ${USER}/.ssh
+chmod -R 600 ${USER}/.ssh
+
+#### Git
+git config --global user.email "sebastian.kornehl@codecentric.de"
+git config --global user.name "Sebastian Kornehl"
