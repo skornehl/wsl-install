@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e -x
 
 sudo apt-get update
 sudo apt-get upgrade -y 
@@ -13,7 +14,6 @@ sudo apt-get install -y \
         golang  \
         zsh \
         awscli \
-        net-tools dig \
         python3-pip 
 
 #### Docker
@@ -73,6 +73,8 @@ mkdir ${USER}/.ssh
 cp /mnt/c/Users/sebas/workspace/ssh/* ${USER}/.ssh
 chown -R skornehl. ${USER}/.ssh
 chmod -R 600 ${USER}/.ssh
+ssh-add ${USER}/.ssh/id_ed25519
+ssh-add ${USER}/.ssh/id_rsa
 
 #### Git
 git config --global user.email "sebastian.kornehl@codecentric.de"
