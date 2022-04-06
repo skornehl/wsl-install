@@ -41,7 +41,7 @@ wsl -d ubuntu-${CustomerName}
 ## Install WSL
 In WSL Terminal
 ```
-wget -O - https://github.com/skornehl/wsl-install/blob/main/install.sh | bash
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/skornehl/wsl-install/main/install.sh)"
 ```
 
 ## Delete old Distro
