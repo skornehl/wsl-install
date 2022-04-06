@@ -41,8 +41,9 @@ wsl -d ubuntu-${CustomerName}
 ```
 
 ## Install WSL
-In WSL Terminal
-(!) Prequesites: Have your Keys at `C:\Users\sebas\workspace\ssh` 
+Prequesites: Have your Keys at `C:\Users\sebas\workspace\ssh` 
+
+In WSL Terminal 
 ```
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/skornehl/wsl-install/main/install.sh)"
 ```
