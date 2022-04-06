@@ -19,33 +19,31 @@ sudo apt-get install -y \
 #### Docker
 ###### See https://dev.to/felipecrs/simply-run-docker-on-wsl2-3o8
 sudo apt-get remove docker docker-engine docker.io containerd runc
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-
-
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --yes --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
 
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io
-sudo (groupadd docker || true)
+sudo groupadd docker || true
 sudo usermod -aG docker skornehl
 
 #### Docker Compose
 # Finds the latest version
-$ compose_version=$(curl -fsSL -o /dev/null -w "%{url_effective}" https://github.com/docker/compose/releases/latest | xargs basename)
+compose_version=$(curl -fsSL -o /dev/null -w "%{url_effective}" https://github.com/docker/compose/releases/latest | xargs basename)
 # Downloads the binary to the plugins folder
-$ curl -fL --create-dirs -o ~/.docker/cli-plugins/docker-compose \
+curl -fL --create-dirs -o ~/.docker/cli-plugins/docker-compose \
     "https://github.com/docker/compose/releases/download/${compose_version}/docker-compose-linux-$(uname -m)"
 # Assigns execution permission to it
-$ chmod +x ~/.docker/cli-plugins/docker-compose
+chmod +x ~/.docker/cli-plugins/docker-compose
 # Finds the latest version
-$ switch_version=$(curl -fsSL -o /dev/null -w "%{url_effective}" https://github.com/docker/compose-switch/releases/latest | xargs basename)
+switch_version=$(curl -fsSL -o /dev/null -w "%{url_effective}" https://github.com/docker/compose-switch/releases/latest | xargs basename)
 # Downloads the binary
-$ sudo curl -fL -o /usr/local/bin/docker-compose \
+sudo curl -fL -o /usr/local/bin/docker-compose \
     "https://github.com/docker/compose-switch/releases/download/${switch_version}/docker-compose-linux-$(dpkg --print-architecture)"
 # Assigns execution permission to it
-$ sudo chmod +x /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
 
 #### Kubernetes 
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
@@ -62,9 +60,6 @@ sudo apt install -y terraform
 
 #### AWS 
 pip install awscli 
-
-#### OH MY ZSH
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 #### Workspace 
 mkdir -p ${USER}/workspace
@@ -87,3 +82,6 @@ git config --global user.name "Sebastian Kornehl"
 #### ArgoCD
 curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
 chmod +x /usr/local/bin/argocd
+
+#### OH MY ZSH
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
