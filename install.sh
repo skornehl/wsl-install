@@ -73,7 +73,7 @@ cp -pr wsl-install/zshrc ${HOME}/.zshrc
 mkdir ${HOME}/.ssh
 cp /mnt/c/Users/sebas/workspace/ssh/* ${HOME}/.ssh
 sudo chown -R skornehl. ${HOME}/.ssh
-sudo chmod -R 600 ${HOME}/.ssh
+sudo chmod -R 700 ${HOME}/.ssh
 ssh-add ${HOME}/.ssh/id_ed25519
 ssh-add ${HOME}/.ssh/id_rsa
 
