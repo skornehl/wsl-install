@@ -1,14 +1,5 @@
 #!/bin/bash
 
-### Create User
-# NEW_USER=skornehl
-# useradd -m -G sudo -s /bin/bash "$NEW_USER"
-# passwd "$NEW_USER"
-# tee /etc/wsl.conf <<_EOF
-# [user]
-# default=${NEW_USER}
-# _EOF
-
 sudo apt-get update
 sudo apt-get upgrade -y 
 sudo apt-get install -y \
@@ -69,3 +60,9 @@ pip install awscli
 
 #### OH MY ZSH
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+#### Workspace 
+mkdir -p ${USER}/workspace
+cd ${USER}/Workspace
+git clone https://github.com/skornehl/wsl-install.git
+cp -pr wsl-install/zshrc ${USER}/.zshrc
