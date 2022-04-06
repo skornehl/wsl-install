@@ -11,7 +11,7 @@ curl (("https://cloud-images.ubuntu.com",
 "releases/hirsute/release",
 "ubuntu-21.04-server-cloudimg-amd64-wsl.rootfs.tar.gz") -join "/") `
 --output ubuntu-21.04-wsl-rootfs-tar.gz
-wsl --import Ubuntu-${CustomerName} C:\Users\sebas\ubuntu-otto .\ubuntu-21.04-wsl-rootfs-tar.gz
+wsl --import Ubuntu-${CustomerName} C:\Users\sebas\ubuntu-${CustomerName} .\ubuntu-21.04-wsl-rootfs-tar.gz
 wsl -d ${CustomerName}
 ```
 
