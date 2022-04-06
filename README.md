@@ -11,7 +11,7 @@ curl (("https://cloud-images.ubuntu.com",
 "releases/hirsute/release",
 "ubuntu-21.04-server-cloudimg-amd64-wsl.rootfs.tar.gz") -join "/") `
 --output ubuntu-21.04-wsl-rootfs-tar.gz
-wsl --import Ubuntu-${CustomerName} C:\Users\sebas\ubuntu-${CustomerName} .\ubuntu-21.04-wsl-rootfs-tar.gz
+wsl --import ubuntu-${CustomerName} C:\Users\sebas\ubuntu-${CustomerName} .\ubuntu-21.04-wsl-rootfs-tar.gz
 wsl -d ${CustomerName}
 ```
 
@@ -31,12 +31,18 @@ In WSL Terminal
 In local Powershell
 
 ```
-wsl --shutdown ${CustomerName}
-wsl -d ${CustomerName}
+wsl --shutdown ubuntu-${CustomerName}
+wsl -d ubuntu-${CustomerName}
 ```
 
 ## Install WSL
 In WSL Terminal
 ```
 wget -O - https://github.com/skornehl/wsl-install/blob/main/install.sh | bash
+```
+
+## Delete old Distro
+
+```
+wsl --unregister ubuntu-${CustomerName}
 ```
