@@ -22,10 +22,11 @@ In WSL Terminal
  NEW_USER=skornehl
  useradd -m -G sudo -s /bin/bash "$NEW_USER"
  passwd "$NEW_USER"
- tee /etc/wsl.conf <<_EOF
- [user]
- default=${NEW_USER}
- _EOF
+ 
+tee /etc/wsl.conf <<_EOF
+[user]
+default=${NEW_USER}
+_EOF
 ```
 
 ## Restart WSL
