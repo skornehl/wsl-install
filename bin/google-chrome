@@ -1,0 +1,4 @@
+#!/bin/bash
+
+WIN_GOOGLE="/mnt/c/Program\ Files/Google/Chrome/Application/chrome.exe"
+eval ${WIN_GOOGLE} "$1"

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+(sleep 5; google-chrome http://localhost:1080)&
+argocd admin dashboard --namespace=argocd --port 1080 
+
+
