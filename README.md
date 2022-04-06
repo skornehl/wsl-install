@@ -6,6 +6,7 @@ Original from: https://cloudbytes.dev/snippets/how-to-install-multiple-instances
 In local Powershell
 
 ```
+$CustomerName = "comeCustomer"
 Remove-Item alias:curl
 curl (("https://cloud-images.ubuntu.com",
 "releases/hirsute/release",
@@ -31,6 +32,7 @@ In WSL Terminal
 In local Powershell
 
 ```
+$CustomerName = "comeCustomer"
 wsl --shutdown ubuntu-${CustomerName}
 wsl -d ubuntu-${CustomerName}
 ```
@@ -44,5 +46,6 @@ wget -O - https://github.com/skornehl/wsl-install/blob/main/install.sh | bash
 ## Delete old Distro
 
 ```
+$CustomerName = "comeCustomer"
 wsl --unregister ubuntu-${CustomerName}
 ```
