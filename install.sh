@@ -86,4 +86,4 @@ sudo curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/rele
 sudo chmod +x /usr/local/bin/argocd
 
 #### OH MY ZSH
-sudo sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sudo -u skornehl sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
