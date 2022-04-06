@@ -19,14 +19,16 @@ wsl -d ubuntu-${CustomerName}
 ## Install User
 In WSL Terminal
 ```
- NEW_USER=skornehl
- useradd -m -G sudo -s /bin/bash "$NEW_USER"
- passwd "$NEW_USER"
+NEW_USER=skornehl
+useradd -m -G sudo -s /bin/bash "$NEW_USER"
+passwd "$NEW_USER"
  
 tee /etc/wsl.conf <<_EOF
 [user]
 default=${NEW_USER}
 _EOF
+
+exit
 ```
 
 ## Restart WSL
