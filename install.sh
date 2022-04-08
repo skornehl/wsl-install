@@ -1,6 +1,7 @@
 #!/bin/bash
 set -x
 
+export LINUX_USER=skornehl
 export KEEP_ZSHRC='yes'
 
 sudo apt-get update
@@ -20,6 +21,10 @@ sudo apt-get install -y \
 
 #### Docker
 ###### See https://dev.to/felipecrs/simply-run-docker-on-wsl2-3o8
+sudo touch /etc/fstab
+sudo update-alternatives --set iptables /usr/sbin/iptables-legacy
+sudo update-alternatives --set ip6tables /usr/sbin/ip6tables-legacy
+
 sudo apt-get remove docker docker-engine docker.io containerd runc
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --yes --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 echo \
@@ -29,7 +34,7 @@ sudo apt-get update
 
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 sudo groupadd docker || true
-sudo usermod -aG docker skornehl
+sudo usermod -aG docker ${LINUX_USER}
 
 #### Docker Compose
 # Finds the latest version
@@ -52,8 +57,10 @@ curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add
 sudo apt-add-repository -y "deb https://apt.kubernetes.io/ kubernetes-xenial main" 
 sudo apt-get install -y kubectl
 
-export GO111MODULE=on 
-go get sigs.k8s.io/kind@v0.12.0
+mkdir -p ${HOME}/bin
+curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.12.0/kind-linux-amd64
+chmod +x ./kind
+mv ./kind /home/${LINUX_USER}/bin/kind
 
 #### Terraform
 curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
@@ -62,6 +69,9 @@ sudo apt install -y terraform
 
 #### AWS 
 pip install awscli 
+
+#### Ansible 
+pip install ansible 
 
 #### Workspace 
 mkdir -p ${HOME}/workspace
