@@ -16,8 +16,19 @@ sudo apt-get install -y \
         lsb-release \
         golang  \
         zsh \
-        awscli \
+        zip \
         python3-pip 
+
+#### AWSCLI & saml2aws
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+
+saml2aws_version=$(curl -fsSL -o /dev/null -w "%{url_effective}" https://github.com/Versent/saml2aws/releases/latest | xargs basename)
+wget https://github.com/Versent/saml2aws/releases/download/${saml2aws_version}/saml2aws_${saml2aws_version:1}_linux_amd64.tar.gz
+tar -xzvf saml2aws_${saml2aws_version:1}_linux_amd64.tar.gz -C ~/bin
+chmod u+x ~/bin/saml2aws
+sudo apt-get purge --auto-remove dbus-x11
 
 #### Docker
 ###### See https://dev.to/felipecrs/simply-run-docker-on-wsl2-3o8
